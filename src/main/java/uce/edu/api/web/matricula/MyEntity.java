@@ -1,4 +1,4 @@
-package uce.edu.api.web.matricula;
+package uce.edu.web.api.matricula;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;

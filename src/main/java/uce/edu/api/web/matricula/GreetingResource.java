@@ -1,4 +1,4 @@
-package uce.edu.api.web.matricula;
+package uce.edu.web.api.matricula;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

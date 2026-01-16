@@ -13,11 +13,28 @@ Princpios Calve RESTful
 1. Recursos: Todo objetos con el trabajamos es un recurso, Como una Entidad en JPA
 2. Cliente Servidor: 
 3. Sin Estado: Stateless, no guarda el estado para la siguiente pregunta, cada petición es independiente
-4. Uso correcto de http: Métodos http GET (consultas), POST (insertar), PUT (actualizar), PATCH (actualizar parcialmente un recuso), DELETE (eliminar)
+4. Uso correcto de http: Métodos http 
+GET (consultas)
+POST (insertar)
+PUT (actualizar)
+PATCH (actualizar parcialmente un recuso)
+DELETE (eliminar)
 5. Representaciones: cuando utilizo una capacidad de mi api para crear un recurso, se debe enviar el objeto, es una representacion del objeto, no se tabaja con el objeto real
 6. Códigos de Estado: cuando se consume una api se obtiene una respuesta, 
 7. Cacheable: la api puede manejar información volatil, osea información guardada en el caché
 8. Por capas: Capas correctamente estructurada --- Acceso a Datos, Lógica de Negocios, Controlador.
 
 Micro Profile: es un conjunto de especificaciones para la construcción de APIS Web basadas en java y orientadas para microservicios.
-Quarkus, como implementación de microprofile -> consume menos cpu y memoria por que compila y optimiza al SO con lenguaje nativo.
+Quarkus,(Marco Integral de Java) como implementación de microprofile -> consume menos cpu y memoria por que compila y optimiza al SO con lenguaje nativo.
+
+
+----------------------
+ARQUITECTURA DE MICROSERVICIOS
+
+DOMAIN DRIVEN DESING (DDD): Metodología de Software - El software debe dividirse por dominios funcionales
+- Domain: Mapeo de entidades (representacion de una tabla en una base de datos)
+- Infraestructura: Acceso a los datos (conexión)
+- Aplication: Logica de Negocio de la aplicacion
+- Interfaces: Reside el controlador y acceso a recursos (endPoints - paths)
+
+Cada capa debe ser representada como paquetes
