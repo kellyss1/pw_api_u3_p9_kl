@@ -1,12 +1,12 @@
-package uce.edu.web.api.matricula.interfaces;
+package uce.edu.api.web.matricula.interfaces;
 
 import java.util.List;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import uce.edu.web.api.matricula.application.EstudianteService;
-import uce.edu.web.api.matricula.domain.Estudiante;
+import uce.edu.api.web.matricula.application.EstudianteService;
+import uce.edu.api.web.matricula.domain.Estudiante;
 
 @Path("/estudiantes")
 public class EstudianteResource {

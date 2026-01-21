@@ -1,11 +1,11 @@
-package uce.edu.web.api.matricula.application;
+package uce.edu.api.web.matricula.application;
 
 import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import uce.edu.web.api.matricula.domain.Estudiante;
-import uce.edu.web.api.matricula.infraestructure.EstudianteRepository;
+import uce.edu.api.web.matricula.domain.Estudiante;
+import uce.edu.api.web.matricula.infraestructure.EstudianteRepository;
 
 @ApplicationScoped
 public class EstudianteService {

@@ -1,4 +1,4 @@
-package uce.edu.web.api.matricula.domain;
+package uce.edu.api.web.matricula.domain;
 
 import java.time.LocalDateTime;
 
