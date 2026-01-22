@@ -38,3 +38,25 @@ DOMAIN DRIVEN DESING (DDD): Metodología de Software - El software debe dividirs
 - Interfaces: Reside el controlador y acceso a recursos (endPoints - paths)
 
 Cada capa debe ser representada como paquetes
+
+-------------------------------------------------------------------------------
+
+Modelo de Madurez de Richardson: mejorar la calidad en la construccion de APIs
+    Modelo que permite clasificar la madurez de una API REST y existen 4 niveles:
+        -Nivel 0: debe trabajar con el modelo HTTP/HTTPS 
+        -Nivel 1: maneja todo como un recurso (Recurso -> URI) y las URIs deben ser autodescriptivas
+        Nomenclatura: URL = http://localhost:8080/(nombre relacionado) matricula/api/v1.0/(nombre del recurso en plural) estudiantes
+        
+        versiones maximo 2 digitos, es lo mas optimo
+        1.1.2
+        cambios mayores-cambios minimos-errores
+        
+        Verbos: el verbo es autodescriptivo, pude existir un mismo endpoint pero con diferente verbo
+        .../estudiantes         GET
+        .../estudiantes/{id}    GET
+        .../estudiantes/{id}    DELETE 
+        .../estudiantes/{id}    PATCH   Body  
+        .../estudiantes         POST    Body (para 1 o varios objetos)
+        .../estudiantes/{id}    PUT     Body
+
+        -

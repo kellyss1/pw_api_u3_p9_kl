@@ -17,7 +17,7 @@ public class MateriaResource {
     private MateriaService materiaService;
 
     @GET
-    @Path("/todos")
+    @Path("/")
     public List<Materia> listarTodos() {
         return materiaService.listarTodos();
     }
@@ -29,19 +29,19 @@ public class MateriaResource {
     }
 
     @POST
-    @Path("/crear")
+    @Path("")
     public void guardar(Materia materia) {
         materiaService.guardar(materia);
     }
 
     @PUT
-    @Path("/actualizar/{id}")
+    @Path("/{id}")
     public void actualizar(@PathParam("id") Integer id, Materia materia) {
         materiaService.actualizar(id, materia);
     }
 
     @DELETE
-    @Path("/borrar/{id}")
+    @Path("/{id}")
     public void borrar(@PathParam("id") Integer id) {
         materiaService.eliminar(id);
     }
@@ -55,7 +55,7 @@ public class MateriaResource {
 
     // Listar materias con un número mínimo de créditos
     @GET
-    @Path("/listarPorCreditos/{minCreditos}")
+    @Path("/creditos/{minCreditos}")
     public List<Materia> listarPorCreditos(@PathParam("minCreditos") Integer minCreditos) {
         return materiaService.listarPorCreditos(minCreditos);
     }
