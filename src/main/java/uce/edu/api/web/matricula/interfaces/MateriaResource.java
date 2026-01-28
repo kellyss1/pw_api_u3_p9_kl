@@ -2,61 +2,71 @@ package uce.edu.api.web.matricula.interfaces;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
 import uce.edu.api.web.matricula.application.MateriaService;
 import uce.edu.api.web.matricula.domain.Materia;
 
 import java.util.List;
 
-@Path("/materias")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Path("/materia")
 public class MateriaResource {
 
-    @Inject
-    private MateriaService materiaService;
+   @Inject
+   private MateriaService materiaService;
 
-    @GET
-    @Path("/")
-    public List<Materia> listarTodos() {
-        return materiaService.listarTodos();
-    }
+   // 1.
+   @GET
+   @Path("")
+   public List<Materia> listarTodos() {
+      return materiaService.listarTodos();
+   }
 
-    @GET
-    @Path("/consultarPorId/{id}")
-    public Materia consultarPorId(@PathParam("id") Integer id) {
-        return materiaService.consultarPorId(id);
-    }
+   // 2.
+   @GET
+   @Path("/{id}")
+   public Materia consultarPorId(@PathParam("id") Integer id) {
+      return materiaService.consultarPorId(id);
+   }
 
-    @POST
-    @Path("")
-    public void guardar(Materia materia) {
-        materiaService.guardar(materia);
-    }
+   // 3.
+   @POST
+   @Path("")
+   public void guardar(Materia materia) {
+      materiaService.guardar(materia);
+   }
 
-    @PUT
-    @Path("/{id}")
-    public void actualizar(@PathParam("id") Integer id, Materia materia) {
-        materiaService.actualizar(id, materia);
-    }
+   // 4.
+   @PUT
+   @Path("/{id}")
+   public void actualizar(@PathParam("id") Integer id, Materia materia) {
+      materiaService.actualizar(id, materia);
+   }
 
-    @DELETE
-    @Path("/{id}")
-    public void borrar(@PathParam("id") Integer id) {
-        materiaService.eliminar(id);
-    }
+   // 5.
+   @PATCH
+   @Path("/{id}")
+   public void actualizarMateria(@PathParam("id") Integer id, Materia materia) {
+      materiaService.actualizar(id, materia);
+   }
 
-    // Buscar materias por nombre
-    @GET
-    @Path("/buscarPorNombre/{nombre}")
-    public List<Materia> buscarPorNombre(@PathParam("nombre") String nombre) {
-        return materiaService.buscarPorNombre(nombre);
-    }
+   // 6.
+   @DELETE
+   @Path("/{id}")
+   public void borrar(@PathParam("id") Integer id) {
+      materiaService.eliminar(id);
+   }
 
-    // Listar materias con un número mínimo de créditos
-    @GET
-    @Path("/creditos/{minCreditos}")
-    public List<Materia> listarPorCreditos(@PathParam("minCreditos") Integer minCreditos) {
-        return materiaService.listarPorCreditos(minCreditos);
-    }
+   // Nuevos endpoints
+   // 7.
+   @GET
+   @Path("/{nombre}")
+   public List<Materia> buscarPorNombre(@PathParam("nombre") String nombre) {
+      return materiaService.buscarPorNombre(nombre);
+   }
+
+   // 8.
+   @GET
+   @Path("/{creditos}")
+   public List<Materia> buscarPorSemestre(@PathParam("creditos") Integer creditos) {
+      return materiaService.listarPorCreditos(creditos);
+   }
 }
