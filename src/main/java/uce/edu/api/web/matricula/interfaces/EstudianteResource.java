@@ -3,6 +3,7 @@ package uce.edu.api.web.matricula.interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -38,6 +39,7 @@ public class EstudianteResource {
     @GET
     @Path("")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public List<EstudianteRepresentation> listarTodos() { // Produce informacion
         System.out.println("Listar Todos xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         List<EstudianteRepresentation> lista = new ArrayList<>();
@@ -50,6 +52,7 @@ public class EstudianteResource {
     @GET
     @Path("/provincia/genero")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public List<EstudianteRepresentation> buscarPorProvincia(@QueryParam("provincia") String provincia,
             @QueryParam("genero") String genero) {
         System.out.println("Listar por provincia y genero xxxxxxxxxxxxxxxxxxxxxx");
@@ -59,6 +62,7 @@ public class EstudianteResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public EstudianteRepresentation consultarPorId(@PathParam("id") Integer id) {
         return this.construirLinks(this.estudianteService.consultarPorId(id));
     }
@@ -67,6 +71,7 @@ public class EstudianteResource {
     @Path("")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public Response guardar(EstudianteRepresentation estu) {
         this.estudianteService.crear(estu);
         return Response.status(Response.Status.CREATED).entity(estu).build();
@@ -76,6 +81,7 @@ public class EstudianteResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public Response actualizar(@PathParam("id") Integer id, EstudianteRepresentation estu) {
         this.estudianteService.actualizar(id, estu);
         return Response.status(209).entity(null).build();
@@ -84,18 +90,21 @@ public class EstudianteResource {
     @PATCH
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public void actualizarParcial(@PathParam("id") Integer id, EstudianteRepresentation estu) {
         this.estudianteService.actualizarParcial(id, estu);
     }
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed({"ADMIN"})
     public void borrar(@PathParam("id") Integer id) {
         this.estudianteService.eliminar(id);
     }
 
     @GET
     @Path("/{id}/hijos")
+    @RolesAllowed({"ADMIN"})
     @Produces(MediaType.APPLICATION_JSON)
     public List<HijoRepresentation> buscarPorIdEstudiante(@PathParam("id") Integer id) {
         return this.hijoService.buscarPorIdEstudiante(id);
