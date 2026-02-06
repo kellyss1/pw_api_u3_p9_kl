@@ -3,6 +3,7 @@ package uce.edu.api.web.matricula.interfaces;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -39,7 +40,8 @@ public class EstudianteResource {
     @GET
     @Path("")
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
+    @PermitAll
+    //@RolesAllowed({"admin"})
     public List<EstudianteRepresentation> listarTodos() { // Produce informacion
         System.out.println("Listar Todos xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         List<EstudianteRepresentation> lista = new ArrayList<>();
@@ -62,7 +64,8 @@ public class EstudianteResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"admin"})
+    @PermitAll
+    //@RolesAllowed({"admin"})
     public EstudianteRepresentation consultarPorId(@PathParam("id") Integer id) {
         return this.construirLinks(this.estudianteService.consultarPorId(id));
     }
