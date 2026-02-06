@@ -83,12 +83,12 @@ Modelo de Madurez de Richardson: mejorar la calidad en la construccion de APIs
                     5. 204.- la peticion fue procesada correctamente pero no hay respuesta (sin return)
 
                     6. 400.- BAD REQUEST, indica que hubo un error de sintaxis o está mal estructurada la peticion
-                    7. 401.- UNAUTHORIZED, error en la autenticacion
-                    8. 403.- No está autorizado para consimir la api
-                    9. 404.- Se hizo una petición a algo que no existe, resource not found, url incorrecta
-                    10. 405.- Method Not Allowed, Método no permitido, verbo incorrecto
-                    11. 408.- REQUEST TIMEOUT, la petición se desconectó por tiempo excedido 
-                    12. 415.- Unsupported Media Type, tipo de contenido del body tiene formato incorrecto
+                    7. 401.- UNAUTHORIZED, error en la autenticacion, el usuario no está identificado correctamente
+                    8. 403.- FORBIDDEN, no está autorizado para consumir la API, aunque esté autenticado
+                    9. 404.- NOT FOUND, se hizo una petición a algo que no existe, recurso o URL incorrecta
+                    10. 405.- METHOD NOT ALLOWED, método o verbo HTTP incorrecto para el recurso solicitado
+                    11. 408.- REQUEST TIMEOUT, la petición se desconectó porque excedió el tiempo límite
+                    12. 415.- UNSUPPORTED MEDIA TYPE, el formato del contenido del body es incorrecto o no soportado
 
                     13. 500.- Internal Server Error, cualquier error de la API (en el codigo fuente)
                     14. 503.- Servicio no disponible, el servidor no está listo para recibir la petición todavía
@@ -125,3 +125,13 @@ Autenticacion y Autorizacion
     Openssl es una herramienta para generar certificados digitales y llaves criptograficas
     Comando 1: openssl genpkey -algorithm RSA -out privateKey.pem -pkeyopt rsa_keygen_bits:2048
     Comando 2: openssl rsa -pubout -in privateKey.pem -out publicKey.pem
+
+- Authorization de páginas web - Proteger las rutas
+    En Vue conocidos como guards, guardianes de rutas
+    Usa la funcion next() para redirigir a otra pagina, desde To ha From
+
+    router.beforeEach es un método en Vue Router que se utiliza para registrar un guardia global que se ejecuta antes de cada navegación. Este permite realizar verificaciones o lógica personalizada (como autenticación o permisos) antes de permitir que el usuario acceda a una ruta específica.
+
+        to: La ruta a la que el usuario intenta navegar.
+        from: La ruta desde la que el usuario está navegando.
+        next: Una función que se llama para continuar la navegación o redirigir a otra ruta.
